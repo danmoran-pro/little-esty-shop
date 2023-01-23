@@ -60,7 +60,7 @@ ActiveRecord::Schema.define(version: 2023_01_17_021419) do
 
   create_table "transactions", force: :cascade do |t|
     t.bigint "invoice_id"
-    t.integer "credit_card"
+    t.string "credit_card_number"
     t.string "result"
     t.date "credit_card_expiration_date"
     t.datetime "created_at", null: false
@@ -70,6 +70,7 @@ ActiveRecord::Schema.define(version: 2023_01_17_021419) do
 
   add_foreign_key "invoice_items", "invoices"
   add_foreign_key "invoice_items", "items"
+  add_foreign_key "invoices", "customers"
   add_foreign_key "items", "merchants"
   add_foreign_key "transactions", "invoices"
 end
